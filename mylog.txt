@@ -1,0 +1,16 @@
+Dec 17, 2019 1:02:07 PM nl.uu.cs.aplib.mainConcepts.BasicAgent log
+INFO: Agent agent enters its loop on Thread 19
+Dec 17, 2019 1:02:07 PM nl.uu.cs.aplib.mainConcepts.BasicAgent log
+INFO: Agent agent identifies a goal and starts working on it. Budget: Infinity
+Dec 17, 2019 1:02:07 PM nl.uu.cs.aplib.mainConcepts.BasicAgent log
+INFO: Agent agent is paused.
+Dec 17, 2019 1:02:08 PM nl.uu.cs.aplib.mainConcepts.BasicAgent log
+INFO: Agent agent is stopping...
+Dec 17, 2019 1:02:09 PM nl.uu.cs.aplib.mainConcepts.BasicAgent log
+INFO: Agent agent enters its loop on Thread 20
+Dec 17, 2019 1:02:09 PM nl.uu.cs.aplib.mainConcepts.BasicAgent log
+INFO: Agent agent is blocking, waiting for a goal.
+Dec 17, 2019 1:02:10 PM nl.uu.cs.aplib.mainConcepts.BasicAgent log
+INFO: Agent agent identifies a goal and starts working on it. Budget: Infinity
+Dec 17, 2019 1:02:11 PM nl.uu.cs.aplib.mainConcepts.BasicAgent log
+INFO: Agent agent is stopping...
