@@ -141,7 +141,7 @@ public class BasicAgent {
 	 */
 	public BasicAgent() { 
 		// Setting up this default logging configuration
-		Logging.addSystemErrAsLogHandler();
+		//Logging.addSystemErrAsLogHandler(); ... no need? it seems to have already been added by default
 		Logging.setLoggingLevel(Level.INFO);
 	}
 	
@@ -241,6 +241,17 @@ public class BasicAgent {
 		this.state = state ; 
 		state.logger = this.logger ;
 		return this ;
+	}
+	
+	/**
+	 * Attach an Environment to this agent. To be more precise, to attach the
+	 * Environment to the state structure of this agent. The method returns the
+	 * agent itself so that this method can be used in the Fluent Interface style.
+	 */
+	public BasicAgent attachEnvironment(Environment env) {
+		if (state == null) throw new IllegalArgumentException("The agent needs to have a state to attach an environment to it.") ;
+		state.setEnvironment(env) ;
+		return this  ;
 	}
 	
 	/**

@@ -6,9 +6,11 @@ import static eu.iv4xr.framework.mainConcepts.TestDataCollector.*;
 import java.util.*;
 
 import nl.uu.cs.aplib.agents.AutonomousBasicAgent;
+import nl.uu.cs.aplib.agents.StateWithMessenger;
 import nl.uu.cs.aplib.mainConcepts.BasicAgent;
 import nl.uu.cs.aplib.mainConcepts.CostFunction;
 import nl.uu.cs.aplib.mainConcepts.Deliberation;
+import nl.uu.cs.aplib.mainConcepts.Environment;
 import nl.uu.cs.aplib.mainConcepts.GoalStructure;
 import nl.uu.cs.aplib.mainConcepts.SimpleState;
 
@@ -44,7 +46,7 @@ public class TestAgent extends AutonomousBasicAgent {
 	
 	protected String testDesc ;
 	protected TestDataCollector testDataCollector ;
-	
+	protected GoalStructure goal;
 	
 	/**
 	 * Create a blank instance of TestAgent. To be useful you will need 
@@ -115,6 +117,27 @@ public class TestAgent extends AutonomousBasicAgent {
 		return (TestAgent) super.attachState(state) ;
 	}
 	
+	/**
+	 * Attach a state structure to this agent. The method returns the agent itself
+	 * so that this method can be used in the Fluent Interface style.
+	 */
+	@Override
+	public TestAgent attachState(StateWithMessenger state) {
+		super.attachState(state) ;
+		return this ;
+	}
+	
+	/**
+	 * Attach an Environment to this agent. To be more precise, to attach the
+	 * Environment to the state structure of this agent. The method returns the
+	 * agent itself so that this method can be used in the Fluent Interface style.
+	 */
+	@Override
+	public TestAgent attachEnvironment(Environment env) {
+		super.attachEnvironment(env) ;
+		return this  ;
+	}
+
 	/**
 	 * Set initial computation budget for this agent. The agent must have a goal set.
 	 * This method should not be called when the agent is already working on its 
