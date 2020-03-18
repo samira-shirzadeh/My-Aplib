@@ -1,5 +1,6 @@
 package nl.uu.cs.aplib.exampleUsages;
 
+import eu.iv4xr.framework.exampleTestAgentUsage.SortingGame;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.* ;
 
@@ -10,9 +11,9 @@ class SortingTest {
     public void win() {
         boolean ans = true;
         boolean val;
-        Sorting tester = new Sorting();
+        SortingGame tester = new SortingGame();
         int[] data={2,5,10};
-        tester.setMyArray(data);
+        //tester.setMyArray(data);
         val = tester.win();
         assertTrue(val);
     }
