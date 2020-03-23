@@ -1,5 +1,7 @@
 package eu.iv4xr.framework.exampleTestAgentUsage;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import java.util.*;
 import java.util.stream.IntStream;
 
@@ -59,13 +61,25 @@ public class SortingGame {
     * Swap function for changing the place of two element of array
     * */
 
-    public void swap(int i){
-        final int temp = myArray[i];
-        int j = i+1 < myArray.length  ? i+1 : 0;
+    public void swap(int i, int[] indexOfArray){
+        int temp = myArray[i];
+        int nextElementForSwap = i;
+        pointer(i);
+        nextElementForSwap = nextElementForSwap+1 < myArray.length  ? nextElementForSwap+1 : 0;
+        if( !(ArrayUtils.isEmpty(indexOfArray)) && (Arrays.binarySearch(indexOfArray, nextElementForSwap) >= 0)){
+            nextElementForSwap = nextElementForSwap+1;
+            while(Arrays.binarySearch(indexOfArray, nextElementForSwap) >= 0){
+                nextElementForSwap = nextElementForSwap+1;
+            }
+        }else{
+            nextElementForSwap = i+1;
+        }
+        int j = nextElementForSwap < myArray.length  ? nextElementForSwap : 0;
         myArray[i] = myArray[j];
         myArray[j] = temp;
-        pointer(i);
+
     }
+
 
     public int pointer(int i){
         /*System.out.println("pointer to ele in pointer in the bigining");
@@ -125,12 +139,12 @@ public class SortingGame {
         //System.out.println(sortingClass.pointer(2)) ;
 
         //Call swap function to change the place
-        for (int i=0 ; i< sortingClass.myArray.length ; i++){
+       /* for (int i=0 ; i< sortingClass.myArray.length ; i++){
             int j = i+1 < sortingClass.myArray.length  ? i+1 : i;
             if(sortingClass.myArray[i] > sortingClass.myArray[j]){
                 sortingClass.swap(i);
             }
-        }
+        }*/
         System.out.println(Arrays.toString(sortingClass.getMyArray())) ;
 
        //Call win class

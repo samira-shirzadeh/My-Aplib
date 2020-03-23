@@ -4,6 +4,7 @@ import eu.iv4xr.framework.mainConcepts.*;
 import nl.uu.cs.aplib.Logging;
 import nl.uu.cs.aplib.agents.StateWithMessenger;
 import nl.uu.cs.aplib.mainConcepts.*;
+import org.apache.commons.lang3.ArrayUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -35,6 +36,7 @@ public class TestWithWrappingEnv_SortingGame {
      */
     static class MyState extends StateWithMessenger {
         MyState() { super(); }
+        int[] indexOfArray;
         @Override
         public SortingEnv env() { return (SortingEnv) super.env(); }
     }
@@ -42,12 +44,13 @@ public class TestWithWrappingEnv_SortingGame {
     // Construct a tactic to auto-drive the player to goal's array:
     Tactic arrayToBeSorted(int[] MyArray) {
         Action swap = action("action_swap").do1((MyState S) -> {
-            S.env().sortingGameUnderTest.swap(S.env().sortingGameUnderTest.pointerToElementOfArray);
+            S.env().sortingGameUnderTest.swap(S.env().sortingGameUnderTest.pointerToElementOfArray,S.indexOfArray);
             Logging.getAPLIBlogger().info("swap. New state: " + Arrays.toString(S.env().sortingGameUnderTest.getMyArray()) +"pointer :  "+ S.env().sortingGameUnderTest.pointerToElementOfArray);
             return S;
         });
 
         Action navigate = action("action_navigate").do1((MyState S) -> {
+            S.indexOfArray = ArrayUtils.add(S.indexOfArray, S.env().sortingGameUnderTest.pointerToElementOfArray);
             S.env().sortingGameUnderTest.pointer(S.env().sortingGameUnderTest.pointerToElementOfArray);
             Logging.getAPLIBlogger().info("navigation to new element. New state: " +  Arrays.toString(S.env().sortingGameUnderTest.getMyArray())+"pointer : "+ S.env().sortingGameUnderTest.pointerToElementOfArray);
             return S;
