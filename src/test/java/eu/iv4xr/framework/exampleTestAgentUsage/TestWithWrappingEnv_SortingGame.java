@@ -4,7 +4,6 @@ import eu.iv4xr.framework.mainConcepts.*;
 import nl.uu.cs.aplib.Logging;
 import nl.uu.cs.aplib.agents.StateWithMessenger;
 import nl.uu.cs.aplib.mainConcepts.*;
-import org.apache.commons.lang3.ArrayUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -36,7 +35,7 @@ public class TestWithWrappingEnv_SortingGame {
      */
     static class MyState extends StateWithMessenger {
         MyState() { super(); }
-        int[] indexOfArray;
+        int[] indexOfArray = new int[0];
         @Override
         public SortingEnv env() { return (SortingEnv) super.env(); }
     }
@@ -50,7 +49,7 @@ public class TestWithWrappingEnv_SortingGame {
         });
 
         Action navigate = action("action_navigate").do1((MyState S) -> {
-            S.indexOfArray = ArrayUtils.add(S.indexOfArray, S.env().sortingGameUnderTest.pointerToElementOfArray);
+            S.indexOfArray = S.env().sortingGameUnderTest.add(S.indexOfArray, S.env().sortingGameUnderTest.pointerToElementOfArray);
             S.env().sortingGameUnderTest.pointer(S.env().sortingGameUnderTest.pointerToElementOfArray);
             Logging.getAPLIBlogger().info("navigation to new element. New state: " +  Arrays.toString(S.env().sortingGameUnderTest.getMyArray())+"pointer : "+ S.env().sortingGameUnderTest.pointerToElementOfArray);
             return S;

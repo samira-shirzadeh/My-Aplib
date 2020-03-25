@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: nl.uu.cs.aplib.agents.Test_AutonomousBasicAgent
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.502 s - in nl.uu.cs.aplib.agents.Test_AutonomousBasicAgent

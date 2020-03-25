@@ -1,0 +1,12 @@
+/bin/
+/target/
+/.idea/
+/.settings/
+.classpath
+.project
+aplib.iml
+mylog
+mylog1
+mylog2
+pom
+lgpl-3.0.md

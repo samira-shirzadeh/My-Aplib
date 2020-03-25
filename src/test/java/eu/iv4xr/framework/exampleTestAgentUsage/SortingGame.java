@@ -1,7 +1,5 @@
 package eu.iv4xr.framework.exampleTestAgentUsage;
 
-import org.apache.commons.lang3.ArrayUtils;
-
 import java.util.*;
 import java.util.stream.IntStream;
 
@@ -50,13 +48,7 @@ public class SortingGame {
     {
         return myArray;
     }
-    /*
-    * Setter function for setting array
-    * */
-    /*public int[] setMyArray(int[] array)
-    {
-        return myArray = array;
-    }*/
+
     /*
     * Swap function for changing the place of two element of array
     * */
@@ -66,7 +58,7 @@ public class SortingGame {
         int nextElementForSwap = i;
         pointer(i);
         nextElementForSwap = nextElementForSwap+1 < myArray.length  ? nextElementForSwap+1 : 0;
-        if( !(ArrayUtils.isEmpty(indexOfArray)) && (Arrays.binarySearch(indexOfArray, nextElementForSwap) >= 0)){
+        if( !(isEmpty(indexOfArray)) && (Arrays.binarySearch(indexOfArray, nextElementForSwap) >= 0)){
             nextElementForSwap = nextElementForSwap+1;
             while(Arrays.binarySearch(indexOfArray, nextElementForSwap) >= 0){
                 nextElementForSwap = nextElementForSwap+1;
@@ -77,95 +69,52 @@ public class SortingGame {
         int j = nextElementForSwap < myArray.length  ? nextElementForSwap : 0;
         myArray[i] = myArray[j];
         myArray[j] = temp;
-
     }
 
-
+    /*Set pointer to the next element*/
     public int pointer(int i){
-        /*System.out.println("pointer to ele in pointer in the bigining");
-        System.out.println(i);*/
-        //System.out.println( myArray.length);
         if(i >= myArray.length-1){
-            //System.out.println("pointer to ele in pointer in else");
             return pointerToElementOfArray = 0;
         }
         else{
             pointerToElementOfArray = i+1;
-            /*System.out.println("pointer to ele in pointer in if");
-            System.out.println(pointerToElementOfArray);*/
             return pointerToElementOfArray;
-
         }
     }
 
-    /*
-    * Sort the array
-    * */
-   /* public int[] sortingArray(){
-        //Arrays.sort(myArray);
-        for (int i=0 ; i< myArray.length ; i++){
-            int j = i+1 < myArray.length  ? i+1 : i;
-            if(myArray[i] > myArray[j]){
-                this.swap(i,j);
-            }
+    /*Check the array is empty*/
+    public boolean isEmpty(int[] arr){
+        boolean empty = false;
+       System.out.println(Arrays.toString(arr));
+        if (arr == null) {
+            empty = true;
         }
-        return myArray;
-    }*/
-    /*
+        return empty;
+    }
 
-    * The win function calculate that the array is sorted or not
+    /*Add the number in to array*/
+    public int[] add(int[] arr, int x){
+        int len = arr.length;
+        arr = Arrays.copyOf(arr,len+1);
+        arr[len++] = x;
+        return arr;
+    }
+
+    /* The win function calculate that the array is sorted or not
     * */
     public boolean win(){
-        firstLoop:
         for (int i=0; i< myArray.length ; i++){
-            secondLoop:
-            for (int j = i+1; j < myArray.length; j++) {
-                if (myArray[i] > myArray[j]) {
-                    flag = false;
-                    break firstLoop;
-                } else {
-                    flag = true;
-                }
+            System.out.println("for");
+            System.out.println(i);
+            int j = i+1 < myArray.length  ? i+1 : i;
+            System.out.println(j);
+            if (myArray[i] > myArray[j]) {
+                System.out.println(myArray[i]);
+                System.out.println(myArray[j]);
+                return flag = false;
             }
         }
-        return flag;
+        return flag = true;
     }
-
-   public static void main(String args[]){
-        SortingGame sortingClass = new SortingGame();
-
-        System.out.println("initial array");
-        System.out.println(Arrays.toString(sortingClass.getMyArray())) ;
-        //System.out.println(sortingClass.pointer(2)) ;
-
-        //Call swap function to change the place
-       /* for (int i=0 ; i< sortingClass.myArray.length ; i++){
-            int j = i+1 < sortingClass.myArray.length  ? i+1 : i;
-            if(sortingClass.myArray[i] > sortingClass.myArray[j]){
-                sortingClass.swap(i);
-            }
-        }*/
-        System.out.println(Arrays.toString(sortingClass.getMyArray())) ;
-
-       //Call win class
-        //System.out.println(sortingClass.win());
-
-        //Call the test function for testing
-        //System.out.println(sortingClass.testSorting());
-
-        //Print the random array
-        //System.out.println("array after swap");
-        //System.out.println(Arrays.toString(sortingClass.getMyArray())) ;
-        //Print the sort of array
-        //System.out.println("sorted array");
-        //System.out.println(Arrays.toString(sortingClass.sortingArray())) ;
-    }
-
-
-    /*public boolean testSorting(){
-        int[] data={2,5,10};
-       // this.setMyArray(data);
-        return this.win(); 
-    }*/
 
 }
